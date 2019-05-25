@@ -3,3 +3,5 @@ The requirement of this todo list is as follows:
 * After typing input in the entry field, press enter to show the input as a lable below the entry field
 * When click on the lable, it will dissapear
 * There is a figure on the page calculating the total number of todo objects.
+
+The above is the version 1.
