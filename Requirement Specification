@@ -1,0 +1,5 @@
+The requirement of this todo list is as follows:
+* There is an entry field, accept any kinds of input, with no length limit
+* After typing input in the entry field, press enter to show the input as a lable below the entry field
+* When click on the lable, it will dissapear
+* There is a figure on the page calculating the total number of todo objects.
