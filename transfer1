@@ -1,0 +1,78 @@
+import React from "react";
+
+class InputVehicle extends React.Component {
+  render() {
+    const status = 'How many vehicle: ';
+    return(
+      <div>
+        {status}
+        <input 
+        name='vehicle'
+        value={this.props.vehicle}
+        onChange={this.props.handleInputChange} />
+      </div>
+    );
+  }
+}
+
+class InputCost extends React.Component {
+  render() {
+    const status = 'How much cost: ';
+    return(
+      <div>
+        {status}
+        <input 
+        name='cost'
+        value={this.props.cost}
+        onChange={this.props.handleInputChange} />
+      </div>
+    );
+  }
+}
+
+class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state= {
+      vehicle:'',
+      cost:''
+    }
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleInputChange(e) {
+    this.setState({value: e.target.value});
+  }
+  handleSubmit(event) {
+    alert('total: ' + this.state.cost);
+    event.preventDefault();
+  }
+  renderInputVehicle(i) {
+    return <InputVehicle 
+            value={this.state.vehicle}
+            onChange={this.handleInputChange}/>;
+  }
+  renderInputCost(i) {
+    return <InputCost 
+            value={this.state.cost}
+            onChange={this.handleInputChange}/>;
+  }
+  render() {
+    return(
+      <div>
+        <div>
+          {this.renderInputVehicle(123)}
+        </div>
+        <div>
+          {this.renderInputCost(1232)}
+        </div>
+        <div>
+        <input type="submit" value="Submit" />
+        </div>
+      </div>
+    );
+  }
+}
+
+
+export default Input
