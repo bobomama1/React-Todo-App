@@ -1,0 +1,87 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+import Input from "./Input";
+import Result from "./result";
+
+// class App extends React.Component {
+//   render(){
+//     return(
+//       <div>
+//       <div><Input /></div>
+//       <div><Result /></div>
+//       </div>
+
+//     );
+//   }
+// }
+
+function totalCost (vehicle, cost) {
+  return props.vehicle * props.cost
+}
+
+function tryConvert(vehicle, cost, convert) {
+  const input = parseFloat(vehicle, cost);
+  if (Number.isNaN(vehicle, cost)) {
+    return '';
+  }
+  const output = convert(vehicle, cost);
+  const rounded = Math.round(output * 1000) / 1000;
+  return rounded.toString();
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      vehicle: '',
+      cost: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({[name]: value});
+  }
+
+  handleSubmit(event) {
+    alert('vehicle: ' + this.state.vehicle + 'cost: ' + this.state.cost);
+    event.preventDefault();
+  }
+
+  render() {
+    const vehicle = this.state.vehicle;
+    const cost = this.state.cost;
+    const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+    const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+        vehicle:
+          <input 
+          name= 'vehicle'a
+          type="text" 
+          value={vehicle} 
+          onChange={this.handleChange} />
+          cost:
+          <input 
+          name= 'cost'
+          type="text" 
+          value={cost} 
+          onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+        <total />
+      </form>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
